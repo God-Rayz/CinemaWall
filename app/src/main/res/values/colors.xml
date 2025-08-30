@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Primary Colors -->
+    <color name="primary">#FF6200EE</color>
+    <color name="primary_variant">#FF3700B3</color>
+    <color name="on_primary">#FFFFFFFF</color>
+    
+    <!-- Secondary Colors -->
+    <color name="secondary">#FF03DAC5</color>
+    <color name="secondary_variant">#FF018786</color>
+    <color name="on_secondary">#FF000000</color>
+    
+    <!-- Surface Colors -->
+    <color name="surface">#FFFFFFFF</color>
+    <color name="surface_variant">#FFF3F3F3</color>
+    <color name="on_surface">#FF1C1B1F</color>
+    <color name="on_surface_variant">#FF49454F</color>
+    
+    <!-- Background Colors -->
+    <color name="background">#FFF8F8F8</color>
+    <color name="on_background">#FF1C1B1F</color>
+    
+    <!-- Error Colors -->
+    <color name="error">#FFB3261E</color>
+    <color name="on_error">#FFFFFFFF</color>
+    
+    <!-- Additional Colors -->
+    <color name="outline">#FF79747E</color>
+    <color name="outline_variant">#FFCAC4D0</color>
+    
+    <!-- Video Player Colors -->
+    <color name="video_control_background">#80000000</color>
+    <color name="video_control_foreground">#FFFFFFFF</color>
+    
+    <!-- Status Bar Colors -->
+    <color name="status_bar">#FF1C1B1F</color>
+    <color name="navigation_bar">#FF1C1B1F</color>
+</resources>
