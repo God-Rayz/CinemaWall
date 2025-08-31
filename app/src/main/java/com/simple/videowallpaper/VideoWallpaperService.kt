@@ -65,17 +65,8 @@ class VideoWallpaperService : WallpaperService() {
             super.onVisibilityChanged(visible)
             if (isBatteryOptimizationEnabled) {
                 if (visible) {
-                    Log.d("VideoWallpaper", "Wallpaper visible, resuming video.")
-                    // More aggressive re-initialization
-                    if (exoPlayer == null || !exoPlayer!!.isPlaying) {
-                        currentSurfaceHolder?.let { initExoPlayer(it) }
-                    } else if (exoPlayer?.playWhenReady == true) {
-                        Log.d("VideoWallpaper", "ExoPlayer already playing, no action needed.")
-                    } else {
-                        exoPlayer?.setVideoSurface(currentSurfaceHolder?.surface)
-                        exoPlayer?.play()
-                        Log.d("VideoWallpaper", "ExoPlayer play() called in onVisibilityChanged.")
-                    }
+                    Log.d("VideoWallpaper", "Wallpaper visible, resuming video. Aggressively re-initializing ExoPlayer.")
+                    currentSurfaceHolder?.let { initExoPlayer(it) }
                 } else {
                     Log.d("VideoWallpaper", "Wallpaper hidden, pausing video.")
                     exoPlayer?.pause()
@@ -83,9 +74,8 @@ class VideoWallpaperService : WallpaperService() {
             } else {
                 // If battery optimization is disabled, ensure video is playing if visible
                 if (visible) {
-                    if (exoPlayer == null || !exoPlayer!!.isPlaying) {
-                        currentSurfaceHolder?.let { initExoPlayer(it) }
-                    }
+                    Log.d("VideoWallpaper", "Battery optimization disabled. Wallpaper visible. Aggressively re-initializing ExoPlayer.")
+                    currentSurfaceHolder?.let { initExoPlayer(it) }
                 }
             }
             Log.d("VideoWallpaper", "Battery optimization state: $isBatteryOptimizationEnabled, Visible: $visible")

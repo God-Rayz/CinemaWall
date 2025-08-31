@@ -22,8 +22,7 @@ import androidx.core.content.ContextCompat
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var homeScreenPreview: ImageView
-    private lateinit var lockScreenPreview: ImageView
+    private lateinit var videoPreview: ImageView
 
     private val requestPermissionLauncher = registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted: Boolean ->
         if (isGranted) {
@@ -43,7 +42,7 @@ class MainActivity : AppCompatActivity() {
                 val updateIntent = Intent(VideoWallpaperService.ACTION_UPDATE_WALLPAPER)
                 sendBroadcast(updateIntent)
                 setWallpaper()
-                loadVideoThumbnails()
+                loadVideoThumbnail()
             }
         }
     }
@@ -52,12 +51,18 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        homeScreenPreview = findViewById(R.id.home_screen_preview)
-        lockScreenPreview = findViewById(R.id.lock_screen_preview)
+        videoPreview = findViewById(R.id.video_preview)
 
         val selectVideoButton = findViewById<Button>(R.id.select_video_button)
         selectVideoButton.setOnClickListener {
             checkAndRequestPermissions()
+        }
+
+        val refreshWallpaperButton = findViewById<Button>(R.id.refresh_wallpaper_button)
+        refreshWallpaperButton.setOnClickListener {
+            val updateIntent = Intent(VideoWallpaperService.ACTION_UPDATE_WALLPAPER)
+            sendBroadcast(updateIntent)
+            Toast.makeText(this, "Wallpaper refresh requested.", Toast.LENGTH_SHORT).show()
         }
 
         val batteryOptimizationSwitch = findViewById<Switch>(R.id.battery_optimization_switch)
@@ -75,18 +80,14 @@ class MainActivity : AppCompatActivity() {
                 .show()
         }
 
-        findViewById<LinearLayout>(R.id.home_screen_preview_container).setOnClickListener { 
+        findViewById<LinearLayout>(R.id.video_preview_container).setOnClickListener { 
             checkAndRequestPermissions()
         }
 
-        findViewById<LinearLayout>(R.id.lock_screen_preview_container).setOnClickListener { 
-            checkAndRequestPermissions()
-        }
-
-        loadVideoThumbnails()
+        loadVideoThumbnail()
     }
 
-    private fun loadVideoThumbnails() {
+    private fun loadVideoThumbnail() {
         val videoUri = VideoPreferences.getVideoUri(this)
         if (videoUri != null) {
             val retriever = MediaMetadataRetriever()
@@ -94,8 +95,7 @@ class MainActivity : AppCompatActivity() {
                 retriever.setDataSource(this, videoUri)
                 val bitmap = retriever.getFrameAtTime(0)
                 if (bitmap != null) {
-                    homeScreenPreview.setImageBitmap(bitmap)
-                    lockScreenPreview.setImageBitmap(bitmap)
+                    videoPreview.setImageBitmap(bitmap)
                 }
             } catch (e: Exception) {
                 e.printStackTrace()
@@ -133,6 +133,6 @@ class MainActivity : AppCompatActivity() {
         intent.putExtra(WallpaperManager.EXTRA_LIVE_WALLPAPER_COMPONENT,
             ComponentName(this, VideoWallpaperService::class.java))
         startActivity(intent)
-        Toast.makeText(this, "Please select 'Video Wallpaper' and then 'Set wallpaper' for both Home and Lock screens.", Toast.LENGTH_LONG).show()
+        Toast.makeText(this, "Please select 'Video Wallpaper' and then 'Set wallpaper'.", Toast.LENGTH_LONG).show()
     }
 }
