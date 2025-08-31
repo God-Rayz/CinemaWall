@@ -195,16 +195,23 @@
                         android:textAppearance="?attr/textAppearanceBody2"
                         android:textColor="@color/on_surface_variant" />
 
-                    <com.google.android.material.slider.Slider
-                        android:id="@+id/sliderPlaybackSpeed"
+                    <SeekBar
+                        android:id="@+id/seekBarPlaybackSpeed"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:stepSize="0.25"
-                        android:value="1.0"
-                        app:labelBehavior="floating"
-                        app:valueFrom="0.25"
-                        app:valueTo="2.0" />
+                        android:max="7"
+                        android:progress="4"
+                        android:stepSize="1" />
+                    
+                    <TextView
+                        android:id="@+id/txtPlaybackSpeed"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="1.0x"
+                        android:textAppearance="?attr/textAppearanceCaption"
+                        android:textColor="@color/on_surface_variant" />
 
                 </LinearLayout>
 

@@ -71,7 +71,12 @@ class MainActivity : AppCompatActivity() {
         // Initialize settings from preferences
         binding.switchLoopVideo.isChecked = viewModel.isLoopEnabled()
         binding.switchMuteAudio.isChecked = viewModel.isMuteEnabled()
-        binding.sliderPlaybackSpeed.value = viewModel.getPlaybackSpeed()
+        
+        // Initialize playback speed seekbar
+        val speed = viewModel.getPlaybackSpeed()
+        val progress = ((speed - 0.25f) / 0.25f).toInt()
+        binding.seekBarPlaybackSpeed.progress = progress
+        binding.txtPlaybackSpeed.text = "${speed}x"
     }
 
     private fun setupEventHandlers() {
@@ -106,11 +111,18 @@ class MainActivity : AppCompatActivity() {
             viewModel.setMuteEnabled(isChecked)
         }
 
-        binding.sliderPlaybackSpeed.addOnChangeListener { _, value, fromUser ->
-            if (fromUser) {
-                viewModel.setPlaybackSpeed(value)
+        binding.seekBarPlaybackSpeed.setOnSeekBarChangeListener(object : android.widget.SeekBar.OnSeekBarChangeListener {
+            override fun onProgressChanged(seekBar: android.widget.SeekBar?, progress: Int, fromUser: Boolean) {
+                if (fromUser) {
+                    val speed = 0.25f + (progress * 0.25f)
+                    viewModel.setPlaybackSpeed(speed)
+                    binding.txtPlaybackSpeed.text = "${speed}x"
+                }
             }
-        }
+            
+            override fun onStartTrackingTouch(seekBar: android.widget.SeekBar?) {}
+            override fun onStopTrackingTouch(seekBar: android.widget.SeekBar?) {}
+        })
     }
 
     private fun checkPermissions() {
