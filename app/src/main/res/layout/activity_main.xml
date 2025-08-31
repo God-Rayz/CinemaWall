@@ -1,264 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
-    tools:context=".ui.MainActivity">
+    tools:context=".MainActivity">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:layout_width="match_parent"
+    <LinearLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/surface">
+        android:layout_centerInParent="true"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
 
-        <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:theme="@style/ThemeOverlay.MaterialComponents.Dark.ActionBar"
-            app:title="@string/app_name"
-            app:titleTextColor="@color/on_surface" />
-
-    </com.google.android.material.appbar.AppBarLayout>
-
-    <androidx.core.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        <Button
+            android:id="@+id/select_video_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Select Video" />
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp">
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
 
-            <!-- Video Selection Card -->
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="match_parent"
+            <Switch
+                android:id="@+id/battery_optimization_switch"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                app:cardCornerRadius="12dp"
-                app:cardElevation="4dp">
+                android:text="Battery Optimization" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="16dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/select_video"
-                        android:textAppearance="?attr/textAppearanceHeadline6"
-                        android:textColor="@color/on_surface" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:text="@string/select_video_from_gallery"
-                        android:textAppearance="?attr/textAppearanceBody2"
-                        android:textColor="@color/on_surface_variant" />
-
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/btnSelectVideo"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:text="@string/select_video"
-                        app:icon="@drawable/ic_video_library" />
-
-                </LinearLayout>
-
-            </com.google.android.material.card.MaterialCardView>
-
-            <!-- Selected Video Preview Card -->
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/cardVideoPreview"
-                android:layout_width="match_parent"
+            <ImageView
+                android:id="@+id/battery_optimization_info_icon"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:visibility="gone"
-                app:cardCornerRadius="12dp"
-                app:cardElevation="4dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:padding="16dp"
-                        android:text="@string/current_wallpaper"
-                        android:textAppearance="?attr/textAppearanceHeadline6"
-                        android:textColor="@color/on_surface" />
-
-                    <FrameLayout
-                        android:id="@+id/videoPreviewContainer"
-                        android:layout_width="match_parent"
-                        android:layout_height="200dp"
-                        android:background="@color/surface_variant">
-
-                        <ImageView
-                            android:id="@+id/imgVideoThumbnail"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:scaleType="centerCrop"
-                            android:src="@drawable/ic_video_placeholder" />
-
-                        <com.google.android.material.floatingactionbutton.FloatingActionButton
-                            android:id="@+id/btnPlayPreview"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:src="@drawable/ic_play"
-                            app:fabSize="normal" />
-
-                    </FrameLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:padding="16dp">
-
-                        <com.google.android.material.button.MaterialButton
-                            android:id="@+id/btnPreview"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:layout_marginEnd="8dp"
-                            android:text="@string/preview"
-                            app:icon="@drawable/ic_preview" />
-
-                        <com.google.android.material.button.MaterialButton
-                            android:id="@+id/btnSetWallpaper"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:layout_marginStart="8dp"
-                            android:text="@string/set_as_wallpaper"
-                            app:icon="@drawable/ic_wallpaper" />
-
-                    </LinearLayout>
-
-                </LinearLayout>
-
-            </com.google.android.material.card.MaterialCardView>
-
-            <!-- Settings Card -->
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                app:cardCornerRadius="12dp"
-                app:cardElevation="4dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="16dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/settings"
-                        android:textAppearance="?attr/textAppearanceHeadline6"
-                        android:textColor="@color/on_surface" />
-
-                    <com.google.android.material.switchmaterial.SwitchMaterial
-                        android:id="@+id/switchLoopVideo"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:text="@string/loop_video"
-                        android:checked="true" />
-
-                    <com.google.android.material.switchmaterial.SwitchMaterial
-                        android:id="@+id/switchMuteAudio"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:text="@string/mute_audio"
-                        android:checked="false" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:text="@string/playback_speed"
-                        android:textAppearance="?attr/textAppearanceBody2"
-                        android:textColor="@color/on_surface_variant" />
-
-                    <SeekBar
-                        android:id="@+id/seekBarPlaybackSpeed"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:max="7"
-                        android:progress="4"
-                        android:stepSize="1" />
-                    
-                    <TextView
-                        android:id="@+id/txtPlaybackSpeed"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
-                        android:text="1.0x"
-                        android:textAppearance="?attr/textAppearanceCaption"
-                        android:textColor="@color/on_surface_variant" />
-
-                </LinearLayout>
-
-            </com.google.android.material.card.MaterialCardView>
-
-            <!-- About Card -->
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:cardCornerRadius="12dp"
-                app:cardElevation="4dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="16dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/about"
-                        android:textAppearance="?attr/textAppearanceHeadline6"
-                        android:textColor="@color/on_surface" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:text="@string/no_tracking"
-                        android:textAppearance="?attr/textAppearanceBody2"
-                        android:textColor="@color/on_surface_variant" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:text="@string/open_source"
-                        android:textAppearance="?attr/textAppearanceBody2"
-                        android:textColor="@color/primary" />
-
-                </LinearLayout>
-
-            </com.google.android.material.card.MaterialCardView>
+                android:src="@android:drawable/ic_menu_info_details"
+                android:contentDescription="Information about battery optimization" />
 
         </LinearLayout>
 
-    </androidx.core.widget.NestedScrollView>
+    </LinearLayout>
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</RelativeLayout>

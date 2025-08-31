@@ -1,52 +1,69 @@
-# Video Wallpaper App
+# CinemaWall 🎬
 
-A secure, open-source Android application that allows users to set videos from their gallery as live wallpapers.
+A modern Android app that transforms your device's wallpaper into a cinematic video experience. Set any video as your live wallpaper and enjoy dynamic backgrounds that bring your screen to life.
 
-## Features
+## ✨ Features
 
-- **Video Selection**: Choose videos from device gallery
-- **Live Wallpaper**: Set videos as animated wallpapers
-- **Privacy First**: No tracking, no ads, no unnecessary permissions
-- **Open Source**: Transparent code for community review
-- **Performance Optimized**: Efficient video playback with minimal battery impact
-- **Customizable**: Adjust playback speed, loop settings, and more
+- **Video Wallpapers**: Set any video file as your device wallpaper
+- **Battery Optimization**: Smart power management with customizable settings
+- **Smooth Playback**: Optimized video rendering for seamless performance
+- **Modern UI**: Clean, intuitive interface designed for the best user experience
+- **Adaptive Icons**: Beautiful app icon that adapts to your device theme
 
-## Security & Privacy
+## 🚀 Getting Started
 
-- No internet permissions required
-- No analytics or tracking
-- Local video processing only
-- Minimal permissions (only what's necessary)
-- Open source for transparency
+### Prerequisites
 
-## Technical Details
+- Android Studio Arctic Fox or later
+- Android SDK API level 21 (Android 5.0) or higher
+- A device or emulator running Android 5.0+
+
+### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/God-Rayz/CinemaWall.git
+   ```
+
+2. Open the project in Android Studio
+
+3. Sync Gradle files and build the project
+
+4. Install on your device or emulator
+
+### Usage
+
+1. Launch CinemaWall
+2. Select a video file from your device
+3. Customize battery optimization settings
+4. Set as wallpaper and enjoy!
+
+## 🛠️ Technical Details
 
 - **Language**: Kotlin
 - **Minimum SDK**: API 21 (Android 5.0)
-- **Target SDK**: API 34 (Android 14)
+- **Target SDK**: Latest Android version
 - **Architecture**: MVVM with LiveData
-- **Video Engine**: ExoPlayer for efficient playback
-- **Permissions**: READ_EXTERNAL_STORAGE, SET_WALLPAPER
+- **Dependencies**: AndroidX, Material Design Components
 
-## Building the App
+## 📱 Screenshots
 
-1. Clone this repository
-2. Open in Android Studio
-3. Sync Gradle dependencies
-4. Build and run on device/emulator
+*Screenshots coming soon*
 
-## Contributing
+## 🤝 Contributing
 
-This is an open-source project. Contributions are welcome!
-- Report bugs
-- Suggest features
-- Submit pull requests
-- Improve documentation
+Contributions are welcome! Please feel free to submit a Pull Request.
 
-## License
+## 📄 License
 
-MIT License - see LICENSE file for details
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## Screenshots
+## 🙏 Acknowledgments
 
-(Screenshots will be added as the app is developed)
+- Android team for the excellent platform
+- Material Design team for the beautiful design system
+- Open source community for inspiration and tools
+
+---
+
+Made with ❤️ by [God-Rayz](https://github.com/God-Rayz)

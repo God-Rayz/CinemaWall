@@ -89,15 +89,3 @@ lint/tmp/
 
 # macOS
 .DS_Store
-
-# Windows
-Thumbs.db
-ehthumbs.db
-Desktop.ini
-
-# Linux
-*~
-
-# Temporary files
-*.tmp
-*.temp
