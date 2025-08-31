@@ -6,10 +6,14 @@ import android.app.WallpaperManager
 import android.content.ComponentName
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
+import android.media.MediaMetadataRetriever
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.Switch
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
@@ -17,6 +21,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var homeScreenPreview: ImageView
+    private lateinit var lockScreenPreview: ImageView
 
     private val requestPermissionLauncher = registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted: Boolean ->
         if (isGranted) {
@@ -33,6 +40,7 @@ class MainActivity : AppCompatActivity() {
                 VideoPreferences.setVideoUri(this, videoUri)
                 Toast.makeText(this, "Video selected. Setting wallpaper...", Toast.LENGTH_LONG).show()
                 setWallpaper()
+                loadVideoThumbnails()
             }
         }
     }
@@ -40,6 +48,9 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        homeScreenPreview = findViewById(R.id.home_screen_preview)
+        lockScreenPreview = findViewById(R.id.lock_screen_preview)
 
         val selectVideoButton = findViewById<Button>(R.id.select_video_button)
         selectVideoButton.setOnClickListener {
@@ -59,6 +70,37 @@ class MainActivity : AppCompatActivity() {
                 .setMessage("When enabled, the video wallpaper will pause when another app is in the foreground, saving battery life.")
                 .setPositiveButton("Got it", null)
                 .show()
+        }
+
+        findViewById<LinearLayout>(R.id.home_screen_preview_container).setOnClickListener { 
+            // For now, both home and lock screen previews will trigger the same video picker
+            checkAndRequestPermissions()
+        }
+
+        findViewById<LinearLayout>(R.id.lock_screen_preview_container).setOnClickListener { 
+            checkAndRequestPermissions()
+        }
+
+        loadVideoThumbnails()
+    }
+
+    private fun loadVideoThumbnails() {
+        val videoUri = VideoPreferences.getVideoUri(this)
+        if (videoUri != null) {
+            val retriever = MediaMetadataRetriever()
+            try {
+                retriever.setDataSource(this, videoUri)
+                val bitmap = retriever.getFrameAtTime(0)
+                if (bitmap != null) {
+                    homeScreenPreview.setImageBitmap(bitmap)
+                    lockScreenPreview.setImageBitmap(bitmap)
+                }
+            } catch (e: Exception) {
+                e.printStackTrace()
+                Toast.makeText(this, "Error loading video thumbnail", Toast.LENGTH_SHORT).show()
+            } finally {
+                retriever.release()
+            }
         }
     }
 

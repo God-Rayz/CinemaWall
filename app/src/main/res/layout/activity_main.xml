@@ -6,11 +6,12 @@
     tools:context=".MainActivity">
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:orientation="vertical"
-        android:gravity="center_horizontal">
+        android:gravity="center_horizontal"
+        android:padding="16dp">
 
         <Button
             android:id="@+id/select_video_button"
@@ -22,7 +23,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:gravity="center_vertical">
+            android:gravity="center_vertical"
+            android:layout_marginTop="16dp">
 
             <Switch
                 android:id="@+id/battery_optimization_switch"
@@ -36,6 +38,65 @@
                 android:layout_height="wrap_content"
                 android:src="@android:drawable/ic_menu_info_details"
                 android:contentDescription="Information about battery optimization" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="32dp"
+            android:weightSum="2">
+
+            <!-- Home Screen Preview -->
+            <LinearLayout
+                android:id="@+id/home_screen_preview_container"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center_horizontal"
+                android:padding="8dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Home Screen" />
+
+                <ImageView
+                    android:id="@+id/home_screen_preview"
+                    android:layout_width="120dp"
+                    android:layout_height="200dp"
+                    android:scaleType="centerCrop"
+                    android:background="@android:color/darker_gray"
+                    android:contentDescription="Home Screen Video Wallpaper Preview" />
+
+            </LinearLayout>
+
+            <!-- Lock Screen Preview -->
+            <LinearLayout
+                android:id="@+id/lock_screen_preview_container"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center_horizontal"
+                android:padding="8dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Lock Screen" />
+
+                <ImageView
+                    android:id="@+id/lock_screen_preview"
+                    android:layout_width="120dp"
+                    android:layout_height="200dp"
+                    android:scaleType="centerCrop"
+                    android:background="@android:color/darker_gray"
+                    android:contentDescription="Lock Screen Video Wallpaper Preview" />
+
+            </LinearLayout>
 
         </LinearLayout>
 
