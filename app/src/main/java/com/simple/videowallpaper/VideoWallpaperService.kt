@@ -67,6 +67,7 @@ class VideoWallpaperService : WallpaperService() {
         }
 
         private fun initMediaPlayer(holder: SurfaceHolder) {
+            Log.d("VideoWallpaper", "Initializing MediaPlayer.")
             releaseMediaPlayer() // Ensure any existing player is released
             val videoUri = VideoPreferences.getVideoUri(applicationContext)
             if (videoUri != null) {
