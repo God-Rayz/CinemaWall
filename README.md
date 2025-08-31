@@ -12,24 +12,9 @@ A modern Android app that transforms your device's wallpaper into a cinematic vi
 
 ## 🚀 Getting Started
 
-### Prerequisites
-
-- Android Studio Arctic Fox or later
-- Android SDK API level 21 (Android 5.0) or higher
-- A device or emulator running Android 5.0+
-
 ### Installation
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/God-Rayz/CinemaWall.git
-   ```
-
-2. Open the project in Android Studio
-
-3. Sync Gradle files and build the project
-
-4. Install on your device or emulator
+Simply go to our [Releases](https://github.com/God-Rayz/CinemaWall/releases) section and download the latest APK!
 
 ### Usage
 
@@ -55,6 +40,16 @@ A modern Android app that transforms your device's wallpaper into a cinematic vi
 Ready to try CinemaWall? Download the latest APK from our [Releases](https://github.com/God-Rayz/CinemaWall/releases) page!
 
 **Latest Version**: [v1.0.0](https://github.com/God-Rayz/CinemaWall/releases/latest)
+
+## 🎯 Why I Built This
+
+I created CinemaWall completely **free** because I wanted a live wallpaper app without:
+- ❌ In-app purchases
+- ❌ Ads
+- ❌ Trackers
+- ❌ Unnecessary file permissions
+
+This app is built with privacy and user experience in mind. No hidden costs, no data collection, just a clean, functional video wallpaper app that does exactly what it promises.
 
 ## 🤝 Contributing
 
