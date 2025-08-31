@@ -27,7 +27,7 @@ class VideoWallpaperService : WallpaperService() {
             if (isBatteryOptimizationEnabled) {
                 if (visible) {
                     Log.d("VideoWallpaper", "Wallpaper visible, resuming video.")
-                    // Re-initialize MediaPlayer if it's not playing or in a bad state
+                    // More aggressive re-initialization
                     if (mediaPlayer == null || !mediaPlayer!!.isPlaying) {
                         currentSurfaceHolder?.let { initMediaPlayer(it) }
                     } else {
@@ -36,6 +36,13 @@ class VideoWallpaperService : WallpaperService() {
                 } else {
                     Log.d("VideoWallpaper", "Wallpaper hidden, pausing video.")
                     mediaPlayer?.pause()
+                }
+            } else {
+                // If battery optimization is disabled, ensure video is playing if visible
+                if (visible) {
+                    if (mediaPlayer == null || !mediaPlayer!!.isPlaying) {
+                        currentSurfaceHolder?.let { initMediaPlayer(it) }
+                    }
                 }
             }
             Log.d("VideoWallpaper", "Battery optimization state: $isBatteryOptimizationEnabled, Visible: $visible")
