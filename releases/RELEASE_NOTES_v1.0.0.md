@@ -49,6 +49,6 @@ Found a bug or have a feature request? Please open an issue on GitHub!
 
 ---
 
-**Download**: [CinemaWall-v1.0.0-debug.apk](CinemaWall-v1.0.0-debug.apk)
+**Download**: [CinemaWall-v1.0.0.apk](CinemaWall-v1.0.0.apk)
 **Release Date**: $(date +%B %d, %Y)
 **Version**: 1.0.0
