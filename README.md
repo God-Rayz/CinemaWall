@@ -50,6 +50,12 @@ A modern Android app that transforms your device's wallpaper into a cinematic vi
 
 *Screenshots coming soon*
 
+## 📥 Downloads
+
+Ready to try CinemaWall? Download the latest APK from our [Releases](https://github.com/God-Rayz/CinemaWall/releases) page!
+
+**Latest Version**: [v1.0.0](https://github.com/God-Rayz/CinemaWall/releases/latest)
+
 ## 🤝 Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
