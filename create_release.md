@@ -69,7 +69,7 @@ Found a bug or have a feature request? Please open an issue on GitHub!
 ```
 
 ### 5. Upload the APK
-- Drag and drop the `CinemaWall-v1.0.0.apk` file from the `releases/` folder
+- Drag and drop the `CinemaWall-v1.0.0-debug.apk` file from the `releases/` folder
 - Or click "Attach binaries" and select the APK file
 
 ### 6. Publish Release
@@ -84,7 +84,7 @@ After publishing, users will be able to:
 
 ## 📱 APK Location
 
-The APK file is located at: `releases/CinemaWall-v1.0.0.apk`
+The APK file is located at: `releases/CinemaWall-v1.0.0-debug.apk`
 
 ---
 
