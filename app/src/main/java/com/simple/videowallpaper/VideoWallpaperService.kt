@@ -149,6 +149,7 @@ class VideoWallpaperService : WallpaperService() {
         }
 
         private fun releaseExoPlayer() {
+            exoPlayer?.setVideoSurface(null) // Explicitly disconnect surface
             exoPlayer?.release()
             exoPlayer = null
         }
