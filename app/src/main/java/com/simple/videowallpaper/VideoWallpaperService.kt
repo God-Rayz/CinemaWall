@@ -36,7 +36,7 @@ class VideoWallpaperService : WallpaperService() {
     override fun onCreate() {
         super.onCreate()
         val filter = IntentFilter(ACTION_UPDATE_WALLPAPER)
-        registerReceiver(wallpaperUpdateReceiver, filter)
+        registerReceiver(wallpaperUpdateReceiver, filter, Context.RECEIVER_NOT_EXPORTED)
     }
 
     override fun onDestroy() {
@@ -69,8 +69,12 @@ class VideoWallpaperService : WallpaperService() {
                     // More aggressive re-initialization
                     if (exoPlayer == null || !exoPlayer!!.isPlaying) {
                         currentSurfaceHolder?.let { initExoPlayer(it) }
+                    } else if (exoPlayer?.playWhenReady == true) {
+                        Log.d("VideoWallpaper", "ExoPlayer already playing, no action needed.")
                     } else {
+                        exoPlayer?.setVideoSurface(currentSurfaceHolder?.surface)
                         exoPlayer?.play()
+                        Log.d("VideoWallpaper", "ExoPlayer play() called in onVisibilityChanged.")
                     }
                 } else {
                     Log.d("VideoWallpaper", "Wallpaper hidden, pausing video.")
