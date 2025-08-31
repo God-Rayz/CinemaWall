@@ -15,6 +15,7 @@ class VideoWallpaperService : WallpaperService() {
 
         private var mediaPlayer: MediaPlayer? = null
         private var isBatteryOptimizationEnabled: Boolean = false
+        private var currentSurfaceHolder: SurfaceHolder? = null
 
         override fun onCreate(surfaceHolder: SurfaceHolder?) {
             super.onCreate(surfaceHolder)
@@ -26,7 +27,12 @@ class VideoWallpaperService : WallpaperService() {
             if (isBatteryOptimizationEnabled) {
                 if (visible) {
                     Log.d("VideoWallpaper", "Wallpaper visible, resuming video.")
-                    mediaPlayer?.start()
+                    // Re-initialize MediaPlayer if it's not playing or in a bad state
+                    if (mediaPlayer == null || !mediaPlayer!!.isPlaying) {
+                        currentSurfaceHolder?.let { initMediaPlayer(it) }
+                    } else {
+                        mediaPlayer?.start()
+                    }
                 } else {
                     Log.d("VideoWallpaper", "Wallpaper hidden, pausing video.")
                     mediaPlayer?.pause()
@@ -37,6 +43,7 @@ class VideoWallpaperService : WallpaperService() {
 
         override fun onSurfaceCreated(holder: SurfaceHolder) {
             super.onSurfaceCreated(holder)
+            currentSurfaceHolder = holder
             initMediaPlayer(holder)
         }
 
@@ -44,6 +51,7 @@ class VideoWallpaperService : WallpaperService() {
             super.onSurfaceDestroyed(holder)
             Log.d("VideoWallpaper", "Surface destroyed.")
             releaseMediaPlayer()
+            currentSurfaceHolder = null
         }
 
         override fun onDestroy() {
