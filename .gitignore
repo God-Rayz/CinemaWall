@@ -89,3 +89,6 @@ lint/tmp/
 
 # macOS
 .DS_Store
+
+# Release APKs (keep directory but exclude large APK files)
+releases/*.apk
