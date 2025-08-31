@@ -21,23 +21,6 @@ class VideoWallpaperService : WallpaperService() {
             isBatteryOptimizationEnabled = VideoPreferences.getBatteryOptimization(applicationContext)
         }
 
-        
-
-        override fun onSurfaceCreated(holder: SurfaceHolder) {
-            super.onSurfaceCreated(holder)
-            val videoUri = VideoPreferences.getVideoUri(applicationContext)
-            if (videoUri != null) {
-                mediaPlayer = MediaPlayer().apply {
-                    setDataSource(applicationContext, videoUri)
-                    setSurface(holder.surface)
-                    isLooping = true
-                    setVolume(0f, 0f)
-                    prepare()
-                    start()
-                }
-            }
-        }
-
         override fun onVisibilityChanged(visible: Boolean) {
             super.onVisibilityChanged(visible)
             if (isBatteryOptimizationEnabled) {
@@ -52,14 +35,51 @@ class VideoWallpaperService : WallpaperService() {
             Log.d("VideoWallpaper", "Battery optimization state: $isBatteryOptimizationEnabled, Visible: $visible")
         }
 
+        override fun onSurfaceCreated(holder: SurfaceHolder) {
+            super.onSurfaceCreated(holder)
+            initMediaPlayer(holder)
+        }
+
         override fun onSurfaceDestroyed(holder: SurfaceHolder) {
             super.onSurfaceDestroyed(holder)
-            mediaPlayer?.release()
-            mediaPlayer = null
+            Log.d("VideoWallpaper", "Surface destroyed.")
+            releaseMediaPlayer()
         }
 
         override fun onDestroy() {
             super.onDestroy()
+            releaseMediaPlayer()
+        }
+
+        private fun initMediaPlayer(holder: SurfaceHolder) {
+            releaseMediaPlayer() // Ensure any existing player is released
+            val videoUri = VideoPreferences.getVideoUri(applicationContext)
+            if (videoUri != null) {
+                try {
+                    mediaPlayer = MediaPlayer().apply {
+                        setDataSource(applicationContext, videoUri)
+                        setSurface(holder.surface)
+                        isLooping = true
+                        setVolume(0f, 0f) // Mute the video
+                        setOnErrorListener { mp, what, extra ->
+                            Log.e("VideoWallpaper", "MediaPlayer error: what=$what, extra=$extra")
+                            releaseMediaPlayer()
+                            true
+                        }
+                        setOnCompletionListener { mp ->
+                            Log.d("VideoWallpaper", "MediaPlayer completed, re-starting.")
+                            mp.start() // Ensure it loops even if isLooping has issues
+                        }
+                        prepare()
+                        start()
+                    }
+                } catch (e: Exception) {
+                    Log.e("VideoWallpaper", "Error initializing MediaPlayer: ${e.message}", e)
+                }
+            }
+        }
+
+        private fun releaseMediaPlayer() {
             mediaPlayer?.release()
             mediaPlayer = null
         }
