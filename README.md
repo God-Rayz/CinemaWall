@@ -39,7 +39,7 @@ Simply go to our [Releases](https://github.com/God-Rayz/CinemaWall/releases) sec
 
 Ready to try CinemaWall? Download the latest APK from our [Releases](https://github.com/God-Rayz/CinemaWall/releases) page!
 
-**Latest Version**: [v1.0.0](https://github.com/God-Rayz/CinemaWall/releases/latest)
+**Latest Version**: [v1.0.1](https://github.com/God-Rayz/CinemaWall/releases/latest)
 
 ## 🎯 Why I Built This
 
