@@ -39,6 +39,9 @@ class MainActivity : AppCompatActivity() {
             if (videoUri != null) {
                 VideoPreferences.setVideoUri(this, videoUri)
                 Toast.makeText(this, "Video selected. Setting wallpaper...", Toast.LENGTH_LONG).show()
+                // Send broadcast to VideoWallpaperService to update its video
+                val updateIntent = Intent(VideoWallpaperService.ACTION_UPDATE_WALLPAPER)
+                sendBroadcast(updateIntent)
                 setWallpaper()
                 loadVideoThumbnails()
             }
@@ -73,7 +76,6 @@ class MainActivity : AppCompatActivity() {
         }
 
         findViewById<LinearLayout>(R.id.home_screen_preview_container).setOnClickListener { 
-            // For now, both home and lock screen previews will trigger the same video picker
             checkAndRequestPermissions()
         }
 
@@ -131,5 +133,6 @@ class MainActivity : AppCompatActivity() {
         intent.putExtra(WallpaperManager.EXTRA_LIVE_WALLPAPER_COMPONENT,
             ComponentName(this, VideoWallpaperService::class.java))
         startActivity(intent)
+        Toast.makeText(this, "Please select 'Video Wallpaper' and then 'Set wallpaper' for both Home and Lock screens.", Toast.LENGTH_LONG).show()
     }
 }
