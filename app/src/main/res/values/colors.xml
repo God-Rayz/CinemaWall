@@ -35,4 +35,7 @@
     <!-- Status Bar Colors -->
     <color name="status_bar">#FF1C1B1F</color>
     <color name="navigation_bar">#FF1C1B1F</color>
+    
+    <!-- Launcher Icon Background -->
+    <color name="ic_launcher_background">#FF6200EE</color>
 </resources>
