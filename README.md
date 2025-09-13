@@ -33,7 +33,17 @@ Simply go to our [Releases](https://github.com/God-Rayz/CinemaWall/releases) sec
 
 ## 📱 Screenshots
 
-*Screenshots coming soon*
+<div align="center">
+  <img src="demo.jpg" alt="CinemaWall Screenshot" width="300"/>
+  
+  ### 🎥 Demo Video
+  <video width="300" controls>
+    <source src="recording.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+</div>
+
+*See CinemaWall in action! Select any video and set it as your live wallpaper.*
 
 ## 📥 Downloads
 
