@@ -1,0 +1,5 @@
+Version 1.0.1:
+- Fixed video thumbnail loading issues
+- Improved battery optimization settings
+- Enhanced UI responsiveness
+- Bug fixes and stability improvements

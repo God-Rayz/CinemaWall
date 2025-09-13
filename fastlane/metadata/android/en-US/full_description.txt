@@ -1,0 +1,10 @@
+Transform your device's wallpaper into a cinematic video experience. Set any video file as your live wallpaper with battery optimization features.
+
+Features:
+• Set any video file as your device wallpaper
+• Battery optimization to pause video when other apps are in foreground  
+• Smooth playback using ExoPlayer
+• Clean Material Design interface
+• No ads, no tracking, completely free and open source
+
+Perfect for personalizing your Android device with dynamic video backgrounds while maintaining battery efficiency.

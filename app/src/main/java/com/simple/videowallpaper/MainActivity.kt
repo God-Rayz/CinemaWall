@@ -133,6 +133,6 @@ class MainActivity : AppCompatActivity() {
         intent.putExtra(WallpaperManager.EXTRA_LIVE_WALLPAPER_COMPONENT,
             ComponentName(this, VideoWallpaperService::class.java))
         startActivity(intent)
-        Toast.makeText(this, "Please select 'Video Wallpaper' and then 'Set wallpaper'.", Toast.LENGTH_LONG).show()
+        Toast.makeText(this, "Please select 'Video Wallpaper' and then 'Set wallpaper'. It will apply to both home and lock screens.", Toast.LENGTH_LONG).show()
     }
 }
