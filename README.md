@@ -37,10 +37,12 @@ Simply go to our [Releases](https://github.com/God-Rayz/CinemaWall/releases) sec
   <img src="demo.jpg" alt="CinemaWall Screenshot" width="300"/>
   
   ### 🎥 Demo Video
-  <video width="300" controls>
-    <source src="recording.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
+  <p>
+    <a href="recording.mp4">
+      <img src="demo.jpg" alt="Click to watch demo video" width="300" style="border: 2px solid #007acc; border-radius: 8px; cursor: pointer;"/>
+    </a>
+  </p>
+  <p><em>Click the image above to watch the demo video!</em></p>
 </div>
 
 *See CinemaWall in action! Select any video and set it as your live wallpaper.*
