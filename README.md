@@ -37,15 +37,10 @@ Simply go to our [Releases](https://github.com/God-Rayz/CinemaWall/releases) sec
   <img src="demo.jpg" alt="CinemaWall Screenshot" width="300"/>
   
   ### 🎥 Demo Video
-  <p>
-    <a href="recording.mp4">
-      <img src="demo.jpg" alt="Click to watch demo video" width="300" style="border: 2px solid #007acc; border-radius: 8px; cursor: pointer;"/>
-    </a>
-  </p>
-  <p><em>Click the image above to watch the demo video!</em></p>
+  <img src="demo.gif" alt="CinemaWall Demo Video" width="300" style="border-radius: 8px;"/>
+  
+  <p><em>Watch CinemaWall in action! Select any video and set it as your live wallpaper.</em></p>
 </div>
-
-*See CinemaWall in action! Select any video and set it as your live wallpaper.*
 
 ## 📥 Downloads
 
